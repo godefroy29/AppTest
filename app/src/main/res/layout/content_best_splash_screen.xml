@@ -14,4 +14,49 @@
     android:background="@drawable/backgroundblack"
     android:theme="@android:style/Theme.Holo.Light.NoActionBar.Fullscreen">
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Connection"
+        android:id="@+id/btnConnexion"
+        android:layout_marginBottom="65dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:textColor="#fffafafa" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="NextActivity"
+        android:id="@+id/btnAdmin"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:textColor="#fffafafa" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:id="@+id/editText"
+        android:layout_above="@+id/editText2"
+        android:layout_alignLeft="@+id/editText2"
+        android:layout_alignStart="@+id/editText2"
+        android:hint="Name"
+        android:textColor="@color/material_grey_50" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        android:ems="10"
+        android:id="@+id/editText2"
+        android:layout_above="@+id/btnConnexion"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="79dp"
+        android:autoText="false"
+        android:hint="Password"
+        android:textColor="@color/material_grey_50" />
 </RelativeLayout>
