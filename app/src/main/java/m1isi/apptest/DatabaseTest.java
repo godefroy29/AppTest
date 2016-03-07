@@ -17,15 +17,11 @@ public class DatabaseTest extends AbstractDatabaseClass  {
         this.caller = caller;
     }
 
-    public int getNumberOfProject(){
-        int result = -1;
-
+    public void getNumberOfProject(){
         query = "SELECT COUNT(*) FROM t_projet";
         isQuery = true;
 
         execute();
-
-        return (result);
     }
 
     @Override

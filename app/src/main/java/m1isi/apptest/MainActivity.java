@@ -1,18 +1,18 @@
 package m1isi.apptest;
 
-        import android.os.Bundle;
-        import android.provider.ContactsContract;
-        import android.support.design.widget.FloatingActionButton;
-        import android.support.design.widget.Snackbar;
-        import android.support.v7.app.AppCompatActivity;
-        import android.support.v7.widget.Toolbar;
-        import android.view.View;
-        import android.view.Menu;
-        import android.view.MenuItem;
-
-        import java.util.Vector;
+import android.app.ProgressDialog;
+import android.os.Bundle;
+import android.provider.ContactsContract;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.View;
+import android.view.Menu;
+import android.view.MenuItem;
 
 public class MainActivity extends AppCompatActivity {
+    ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                progressDialog = ProgressDialog.show(MainActivity.this, "Check DB", "getNumberOfProject", true, false);
                 DatabaseTest dt = new DatabaseTest(MainActivity.this);
                 dt.getNumberOfProject();
             }
@@ -53,6 +54,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void getResult(String value){
-        System.out.println("\tFound value "+value);
+        System.out.println("\tFound value " + value);
+        progressDialog.dismiss();
     }
 }
