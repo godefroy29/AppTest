@@ -23,6 +23,54 @@
         <activity
             android:name=".BestSplashScreen"
             android:label="@string/title_activity_best_splash_screen"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Accueil"
+            android:label="@string/title_activity_accueil"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".AccueilNotification"
+            android:label="@string/title_activity_accueil_notification"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".AccueilTache"
+            android:label="@string/title_activity_accueil_tache"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".PojetSelection"
+            android:label="@string/title_activity_pojet_selection"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ProjetAccueil"
+            android:label="@string/title_activity_projet_accueil"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ProjetDetails"
+            android:label="@string/title_activity_projet_details"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ProjetTache"
+            android:label="@string/title_activity_projet_tache"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ProjetCollaborateur"
+            android:label="@string/title_activity_projet_collaborateur"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ProjetDocument"
+            android:label="@string/title_activity_projet_document"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ProjetMessage"
+            android:label="@string/title_activity_projet_message"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ProjetBudget"
+            android:label="@string/title_activity_projet_budget"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ProjetPlanning"
+            android:label="@string/title_activity_projet_planning"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
