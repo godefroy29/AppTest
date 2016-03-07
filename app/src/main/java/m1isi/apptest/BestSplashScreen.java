@@ -34,6 +34,7 @@ public class BestSplashScreen extends Activity {
             @Override
             public void onClick(View view) {
                 startActivity(accueil);
+                finish();
             }
         });
         btnConnexion.setOnClickListener(new View.OnClickListener() {
@@ -42,6 +43,7 @@ public class BestSplashScreen extends Activity {
                 if (testConnexion()) {
                     if (testIdentifiants()){
                         startActivity(accueil);
+                        finish();
                     }else{
                         Toast.makeText(BestSplashScreen.this, "Vérifiez vos identifiants.", Toast.LENGTH_SHORT);
                     }
