@@ -1,6 +1,7 @@
 package m1isi.apptest;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.support.design.widget.FloatingActionButton;
@@ -13,7 +14,7 @@ import android.view.MenuItem;
 
 public class MainActivity extends AppCompatActivity {
     ProgressDialog progressDialog;
-
+Intent bestSplashScreen;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,6 +29,8 @@ public class MainActivity extends AppCompatActivity {
                 progressDialog = ProgressDialog.show(MainActivity.this, "Check DB", "getNumberOfProject", true, false);
                 DatabaseTest dt = new DatabaseTest(MainActivity.this);
                 dt.getNumberOfProject();
+                bestSplashScreen = new Intent(MainActivity.this, BestSplashScreen.class);
+                startActivity(bestSplashScreen);
             }
         });
     }
