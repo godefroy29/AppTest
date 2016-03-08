@@ -2,10 +2,7 @@
 
 package m1isi.apptest;
 
-
-        import android.app.Activity;
-
-        import java.sql.SQLException;
+import java.sql.SQLException;
 
 /**
  * Created by Sylvain LOIZEAU on 3/3/2016.
@@ -22,13 +19,13 @@ public class BestSplashScreenDB extends AbstractDatabaseClass  {
         this.caller = caller;
     }
 
-    public void testId(){
+    public void testId(final String name, final String password){
         fc = functionCalled.eTestId;
         query = " SELECT * FROM t_identifiant "
-                + " WHERE id_username like '" + caller.txtName.getText() + "' "
-                + " AND id_password like '" + caller.txtPwd.getText() + "';";
+                + " WHERE id_username='" + name + "' "
+                + " AND id_password='" + password + "';";
         isQuery = true;
-        System.out.println(query);
+        if(_DEBUG){ System.out.println(query); }
         execute();
     }
 
@@ -38,10 +35,10 @@ public class BestSplashScreenDB extends AbstractDatabaseClass  {
             case eTestId:
                 try {
                     if(rs.first()){
-                        System.out.print("true\n");
+                        if(_DEBUG){ System.out.print("true\n"); }
                         caller.testIdValide(true);
                     }else{
-                        System.out.print("false\n");
+                        if(_DEBUG){ System.out.print("false\n"); }
                         caller.testIdValide(false);
                     }
                 } catch (SQLException e) {

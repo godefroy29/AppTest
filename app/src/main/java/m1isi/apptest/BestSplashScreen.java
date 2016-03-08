@@ -46,9 +46,9 @@ public class BestSplashScreen extends Activity {
         btnConnexion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                progressDialog = ProgressDialog.show(BestSplashScreen.this, "Check DB", "getNumberOfProject", true, false);
+                progressDialog = ProgressDialog.show(BestSplashScreen.this, "Connecting", "Trying to verify your informations", true, false);
                 BestSplashScreenDB testId = new BestSplashScreenDB(BestSplashScreen.this);
-                testId.testId();
+                testId.testId(txtName.getText().toString(), txtPwd.getText().toString());
             }
         });
     }
@@ -59,7 +59,7 @@ public class BestSplashScreen extends Activity {
             startActivity(accueil);
             finish();
         }else{
-            Toast.makeText(BestSplashScreen.this, "Vérifiez vos identifiants.", Toast.LENGTH_SHORT);
+            Toast.makeText(BestSplashScreen.this, "Vérifiez vos identifiants.", Toast.LENGTH_LONG);
         }
     }
 
