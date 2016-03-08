@@ -25,10 +25,10 @@ public class BestSplashScreenDB extends AbstractDatabaseClass  {
     public void testId(){
         fc = functionCalled.eTestId;
         query = " SELECT * FROM t_identifiant "
-                + " WHERE id_username like '" + caller.txtName + "' "
-                + " AND id_password like '" + caller.txtPwd + "';";
+                + " WHERE id_username like '" + caller.txtName.getText() + "' "
+                + " AND id_password like '" + caller.txtPwd.getText() + "';";
         isQuery = true;
-
+        System.out.println(query);
         execute();
     }
 
@@ -37,9 +37,11 @@ public class BestSplashScreenDB extends AbstractDatabaseClass  {
         switch (fc){
             case eTestId:
                 try {
-                    if(rs.next()){
+                    if(rs.first()){
+                        System.out.print("true\n");
                         caller.testIdValide(true);
                     }else{
+                        System.out.print("false\n");
                         caller.testIdValide(false);
                     }
                 } catch (SQLException e) {
