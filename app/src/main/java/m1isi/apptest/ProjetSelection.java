@@ -26,4 +26,8 @@ public class ProjetSelection extends AppCompatActivity {
         });
     }
 
+    public void getNumberOfProjectResult(final int number){
+
+    }
 }
+
