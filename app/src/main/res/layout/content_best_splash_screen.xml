@@ -11,7 +11,7 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="m1isi.apptest.BestSplashScreen"
     tools:showIn="@layout/activity_best_splash_screen"
-    android:background="@drawable/backgroundblack"
+    android:background="@drawable/backgroundblue"
     android:theme="@android:style/Theme.Holo.Light.NoActionBar.Fullscreen">
 
     <Button
@@ -40,10 +40,10 @@
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
         android:ems="10"
-        android:id="@+id/editText"
-        android:layout_above="@+id/editText2"
-        android:layout_alignLeft="@+id/editText2"
-        android:layout_alignStart="@+id/editText2"
+        android:id="@+id/txtName"
+        android:layout_above="@+id/txtPwd"
+        android:layout_alignLeft="@+id/txtPwd"
+        android:layout_alignStart="@+id/txtPwd"
         android:hint="Name"
         android:textColor="@color/material_grey_50" />
 
@@ -52,7 +52,7 @@
         android:layout_height="wrap_content"
         android:inputType="textPassword"
         android:ems="10"
-        android:id="@+id/editText2"
+        android:id="@+id/txtPwd"
         android:layout_above="@+id/btnConnexion"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="79dp"

@@ -29,8 +29,7 @@ Intent bestSplashScreen;
                 progressDialog = ProgressDialog.show(MainActivity.this, "Check DB", "getNumberOfProject", true, false);
                 DatabaseTest dt = new DatabaseTest(MainActivity.this);
                 dt.getNumberOfProject();
-                bestSplashScreen = new Intent(MainActivity.this, BestSplashScreen.class);
-                startActivity(bestSplashScreen);
+
             }
         });
     }
@@ -59,5 +58,7 @@ Intent bestSplashScreen;
     public void getResult(String value){
         System.out.println("\tFound value " + value);
         progressDialog.dismiss();
+        bestSplashScreen = new Intent(MainActivity.this, BestSplashScreen.class);
+        startActivity(bestSplashScreen);
     }
 }

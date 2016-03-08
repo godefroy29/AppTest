@@ -13,14 +13,20 @@ package m1isi.apptest;
 public class BestSplashScreenDB extends AbstractDatabaseClass  {
     final static boolean _DEBUG = true;
 
-    MainActivity caller;
+    BestSplashScreen caller;
 
-    public BestSplashScreenDB(MainActivity caller){
+    private enum functionCalled{eTestId};
+    private functionCalled fc;
+
+    public BestSplashScreenDB(BestSplashScreen caller){
         this.caller = caller;
     }
 
-    public void getNumberOfProject(){
-        query = "SELECT * FROM t_identifiant ";
+    public void testId(){
+        fc = functionCalled.eTestId;
+        query = " SELECT * FROM t_identifiant "
+                + " WHERE id_username like '" + caller.txtName + "' "
+                + " AND id_password like '" + caller.txtPwd + "';";
         isQuery = true;
 
         execute();
@@ -28,14 +34,19 @@ public class BestSplashScreenDB extends AbstractDatabaseClass  {
 
     @Override
     protected void onPostExecute(Void result) {
-        try {
-            if(rs.next()){
-                caller.getResult(rs.getString(1));
-            }else{
-                caller.getResult(null);
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
+        switch (fc){
+            case eTestId:
+                try {
+                    if(rs.next()){
+                        caller.testIdValide(true);
+                    }else{
+                        caller.testIdValide(false);
+                    }
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+                break;
         }
+
     }
 }

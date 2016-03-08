@@ -11,9 +11,13 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class BestSplashScreen extends Activity {
+    ProgressDialog progressDialog;
+    TextView txtName;
+    TextView txtPwd;
 
     Intent accueil;
 
@@ -26,6 +30,8 @@ public class BestSplashScreen extends Activity {
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_best_splash_screen);
 
+        txtName = (TextView) findViewById(R.id.txtName);
+        txtPwd = (TextView) findViewById(R.id.txtPwd);
         accueil = new Intent(this, Accueil.class);
         btnAdmin = (Button) findViewById(R.id.btnAdmin);
         btnConnexion = (Button) findViewById(R.id.btnConnexion);
@@ -40,29 +46,21 @@ public class BestSplashScreen extends Activity {
         btnConnexion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (testConnexion()) {
-                    if (testIdentifiants()){
-                        startActivity(accueil);
-                        finish();
-                    }else{
-                        Toast.makeText(BestSplashScreen.this, "Vérifiez vos identifiants.", Toast.LENGTH_SHORT);
-                    }
-                }else{
-                    Toast.makeText(BestSplashScreen.this, "Pas de connection à la base de données.", Toast.LENGTH_SHORT);
-                }
-
+                progressDialog = ProgressDialog.show(BestSplashScreen.this, "Check DB", "getNumberOfProject", true, false);
+                BestSplashScreenDB testId = new BestSplashScreenDB(BestSplashScreen.this);
+                testId.testId();
             }
         });
     }
 
-    //TODO: verifier id
-    private boolean testIdentifiants() {
-        return true;
-    }
-
-    //TODO: verifier connexion
-    private boolean testConnexion() {
-        return true;
+    public void testIdValide(boolean idValide){
+        progressDialog.dismiss();
+        if (idValide){
+            startActivity(accueil);
+            finish();
+        }else{
+            Toast.makeText(BestSplashScreen.this, "Vérifiez vos identifiants.", Toast.LENGTH_SHORT);
+        }
     }
 
 }

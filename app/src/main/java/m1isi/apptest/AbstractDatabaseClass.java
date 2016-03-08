@@ -79,7 +79,6 @@ public abstract class AbstractDatabaseClass extends AsyncTask<String, Integer, V
     protected Void doInBackground(String... querys) {
         getConnection();
         try {
-            Thread.sleep(5000);
             Statement st = dbConn.createStatement();
             if(isQuery){
                 rs = st.executeQuery(query);
