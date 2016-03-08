@@ -1,5 +1,6 @@
 package m1isi.apptest;
 
+import android.content.Context;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -15,10 +16,21 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.BaseAdapter;
+import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.TextView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class Accueil extends AppCompatActivity {
+
+    private static ListView listTache;
+    private static ListView listProjet;
+    private static ListView listNotification;
 
     private SectionsPagerAdapter mSectionsPagerAdapter;
 
@@ -36,7 +48,27 @@ public class Accueil extends AppCompatActivity {
         mViewPager = (ViewPager) findViewById(R.id.container);
         mViewPager.setAdapter(mSectionsPagerAdapter);
 
+        AccueilDB accueilDB = new AccueilDB(Accueil.this);
+        accueilDB.eGetProjet();
+
+
     }
+    public void setListItemProjet(List<ItemProjet> myList){
+        listProjet = (ListView) findViewById(R.id.listProjet);
+        ProjetAdapter adapter = new ProjetAdapter(this, myList);
+        listProjet.setAdapter(adapter);
+    }
+    //TODO : pour les taches et notifications
+    /*public void setListItemTache(List<ItemProjet> myList){
+        listTache = (ListView) findViewById(R.id.listTache);
+        ProjetAdapter adapter = new ProjetAdapter(this, myList);
+        listProjet.setAdapter(adapter);
+    }
+    public void setListItemNotification(List<ItemProjet> myList){
+        listNotification = (ListView) findViewById(R.id.listNotification);
+        ProjetAdapter adapter = new ProjetAdapter(this, myList);
+        listProjet.setAdapter(adapter);
+    }*/
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -106,6 +138,9 @@ public class Accueil extends AppCompatActivity {
             super.onCreate(savedInstancesState);
         }
 
+
+
+
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
             View view = inflater.inflate(R.layout.fragment_projet, container, false);
@@ -161,7 +196,52 @@ public class Accueil extends AppCompatActivity {
             View view = inflater.inflate(R.layout.fragment_notification, container, false);
             TextView textView = (TextView) view.findViewById(R.id.section_label);
             textView.setText("Notifications récentes");
+
             return view;
+        }
+    }
+
+    public static class ProjetAdapter extends BaseAdapter {
+
+        private List<ItemProjet> myList;
+        private Context myContext;
+        private LayoutInflater myLayout;
+
+
+        public ProjetAdapter(Context context, List<ItemProjet> list){
+            myContext = context;
+            myList = list;
+            myLayout = LayoutInflater.from(myContext);
+        }
+
+        @Override
+        public int getCount() {
+            return myList.size();
+        }
+
+        @Override
+        public Object getItem(int position) {
+            return myList.get(position);
+        }
+
+        @Override
+        public long getItemId(int position) {
+            return myList.get(position).id_projet;//retourne l'id du projet et pas sa position
+        }
+
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent) {
+            LinearLayout layoutItem;
+            if (convertView == null) {
+                layoutItem = (LinearLayout) myLayout.inflate(R.layout.list_item_project, parent, false);
+            } else {
+                layoutItem = (LinearLayout) convertView;
+            }
+            TextView txt_titre = (TextView)layoutItem.findViewById(R.id.txt_pro_titre);
+            TextView txt_desc = (TextView)layoutItem.findViewById(R.id.txt_pro_desc);
+            txt_titre.setText(myList.get(position).pro_titre);
+            txt_desc.setText(myList.get(position).pro_desc);
+            return layoutItem;
         }
     }
 }
