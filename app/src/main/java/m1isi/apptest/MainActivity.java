@@ -60,5 +60,6 @@ Intent bestSplashScreen;
         progressDialog.dismiss();
         bestSplashScreen = new Intent(MainActivity.this, BestSplashScreen.class);
         startActivity(bestSplashScreen);
+        finish();
     }
 }

@@ -71,6 +71,10 @@
         <activity
             android:name=".ProjetPlanning"
             android:label="@string/title_activity_projet_planning"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ProjetCreate"
+            android:label="@string/title_activity_projet_create"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

@@ -1,6 +1,7 @@
 package m1isi.apptest;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -16,11 +17,13 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,11 +39,17 @@ public class Accueil extends AppCompatActivity {
 
     private ViewPager mViewPager;
 
+    private  AccueilDB accueilDB;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_accueil);
+        initialize();
+    }
 
+    private void initialize() {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
@@ -48,16 +57,27 @@ public class Accueil extends AppCompatActivity {
         mViewPager = (ViewPager) findViewById(R.id.container);
         mViewPager.setAdapter(mSectionsPagerAdapter);
 
-        AccueilDB accueilDB = new AccueilDB(Accueil.this);
+        accueilDB = new AccueilDB(Accueil.this);
         accueilDB.eGetProjet();
-
-
     }
+
+
     public void setListItemProjet(List<ItemProjet> myList){
         listProjet = (ListView) findViewById(R.id.listProjet);
         ProjetAdapter adapter = new ProjetAdapter(this, myList);
         listProjet.setAdapter(adapter);
+        listProjet.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(Accueil.this, ProjetAccueil.class);
+                intent.putExtra("idProjet", id);
+                //Toast.makeText(Accueil.this, "Id : " + id, Toast.LENGTH_SHORT).show();
+                startActivity(intent);
+            }
+        });
     }
+
     //TODO : pour les taches et notifications
     /*public void setListItemTache(List<ItemProjet> myList){
         listTache = (ListView) findViewById(R.id.listTache);
@@ -124,7 +144,10 @@ public class Accueil extends AppCompatActivity {
 
     public static class ProjetFragment extends Fragment{
 
+        private FloatingActionButton fabNewProjet;
+        private Intent projetCreate;
         private static final String ARG_SECTION_NUMBER = "section_number";
+
         public static ProjetFragment newInstance(int sectionNumber) {
             ProjetFragment fragment = new ProjetFragment();
             Bundle args = new Bundle();
@@ -136,16 +159,22 @@ public class Accueil extends AppCompatActivity {
         @Override
         public void onCreate(Bundle savedInstancesState){
             super.onCreate(savedInstancesState);
+            projetCreate = new Intent(this.getContext(), ProjetCreate.class);
         }
-
-
-
 
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
             View view = inflater.inflate(R.layout.fragment_projet, container, false);
+
             TextView textView = (TextView) view.findViewById(R.id.section_label);
             textView.setText("Projets récents");
+
+            fabNewProjet = (FloatingActionButton) view.findViewById(R.id.fabNewProjet);
+            fabNewProjet.setOnClickListener(new View.OnClickListener() {
+                public void onClick(View v) {
+                    startActivity(projetCreate);
+                }
+            });
             return view;
         }
     }

@@ -59,7 +59,7 @@ public class BestSplashScreen extends Activity {
             startActivity(accueil);
             finish();
         }else{
-            Toast.makeText(BestSplashScreen.this, "Vérifiez vos identifiants.", Toast.LENGTH_LONG);
+            Toast.makeText(BestSplashScreen.this, "Vérifiez vos identifiants.", Toast.LENGTH_LONG).show();
         }
     }
 
