@@ -173,6 +173,7 @@ public class Accueil extends AppCompatActivity {
             fabNewProjet.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
                     startActivity(projetCreate);
+                    getActivity().finish();
                 }
             });
             return view;

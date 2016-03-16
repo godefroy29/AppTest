@@ -18,8 +18,16 @@ public class ProjetCreateDB extends AbstractDatabaseClass {
     }
 
     public void eAddProjet(ItemProjet myProject){
-        query = "SELECT COUNT(*) FROM t_projet";
-        isQuery = true;
+        query = "INSERT INTO t_projet (pro_titre, pro_desc, pro_dateD, pro_dateFP, pro_budgetD, pro_budgetFP) ";
+        query = query + " VALUES (";
+        query = query + "'" + myProject.pro_titre + "',";
+        query = query + "'" + myProject.pro_desc + "',";
+        query = query + myProject.pro_dateD + ",";
+        query = query + myProject.pro_dateFP + ",";
+        query = query + myProject.pro_budgetD + ",";
+        query = query + myProject.pro_budgetFP + ")";
+        query = query + ";";
+        isInsert = true;
         fc = functionCalled.eAddProjet;
 
         execute();

@@ -22,6 +22,7 @@ public abstract class AbstractDatabaseClass extends AsyncTask<String, Integer, V
 
     protected boolean isQuery = false;
     protected boolean isUpdate = false;
+    protected boolean isInsert = false;
 
     //TODO Put them in a class that can change them
     protected static String adr = "164.132.198.97";
@@ -84,7 +85,10 @@ public abstract class AbstractDatabaseClass extends AsyncTask<String, Integer, V
                 rs = st.executeQuery(query);
             }else if(isUpdate){
                 st.executeUpdate(query);
-            }else{
+            }else if(isInsert){
+                st.execute(query);
+            }
+            else{
                 System.err.println("[AbstractDatabaseClass]ERROR: No type selected for query\""+query+"\"");
             }
 
