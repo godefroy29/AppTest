@@ -28,7 +28,7 @@ public class ProjetCreate extends AppCompatActivity {
     @Override
     public void onBackPressed() {
        startActivity(new Intent(new Intent(this, Accueil.class)));
-        finish();
+       finish();
     }
 
     @Override
@@ -42,7 +42,7 @@ public class ProjetCreate extends AppCompatActivity {
         btnValider.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                progressDialog = ProgressDialog.show(ProjetCreate.this, "Traitement en cours ...", "Projet en cours de création", true, false);
+                progressDialog = ProgressDialog.show(ProjetCreate.this, getString(R.string.general_processing), getString(R.string.projectCreate_creating_project), true, false);
                 ProjetCreateDB projetCreate = new ProjetCreateDB(ProjetCreate.this);
                 projetCreate.eAddProjet(fillProjectItem());
             }
