@@ -34,7 +34,10 @@ public class BestSplashScreenDB extends AbstractDatabaseClass  {
         switch (fc){
             case eTestId:
                 try {
-                    if(rs.first()){
+                    if(rs == null){
+                        if(_DEBUG){ System.out.print("error\n"); }
+                        caller.testIdError();
+                    }else if(rs.first()){
                         if(_DEBUG){ System.out.print("true\n"); }
                         caller.testIdValide(true);
                     }else{

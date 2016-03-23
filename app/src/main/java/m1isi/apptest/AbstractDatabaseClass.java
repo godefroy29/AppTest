@@ -30,21 +30,14 @@ public abstract class AbstractDatabaseClass extends AsyncTask<String, Integer, V
     protected static String dbUser = "ProjetM1";
     protected static String dbPwd = "ProjetM1";
 
-    protected void getConnection(){
-        try {
-            if(_DEBUG){System.out.println("Loading driver");}
-            Class.forName("com.mysql.jdbc.Driver").newInstance();
-            if(_DEBUG){System.out.println("Driver loaded");}
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        try{
-            if(_DEBUG){System.out.println("Trying to connect to: jdbc:mysql://" + adr + ":3306/" + dbName + "?user=" + dbUser + "&password=" + dbPwd);}
-            dbConn = DriverManager.getConnection("jdbc:mysql://" + adr + ":3306/" + dbName + "?user=" + dbUser + "&password=" + dbPwd);
-            if(_DEBUG){System.out.println("Connected!");}
-        } catch (Exception e){
-            e.printStackTrace();
-        }
+    protected void getConnection() throws Exception{
+        if(_DEBUG){System.out.println("Loading driver");}
+        Class.forName("com.mysql.jdbc.Driver").newInstance();
+        if(_DEBUG){System.out.println("Driver loaded");}
+
+        if(_DEBUG){System.out.println("Trying to connect to: jdbc:mysql://" + adr + ":3306/" + dbName + "?user=" + dbUser + "&password=" + dbPwd);}
+        dbConn = DriverManager.getConnection("jdbc:mysql://" + adr + ":3306/" + dbName + "?user=" + dbUser + "&password=" + dbPwd);
+        if(_DEBUG){System.out.println("Connected!");}
     }
 
     protected void close(){
@@ -78,8 +71,8 @@ public abstract class AbstractDatabaseClass extends AsyncTask<String, Integer, V
 
     @Override
     protected Void doInBackground(String... querys) {
-        getConnection();
         try {
+            getConnection();
             Statement st = dbConn.createStatement();
             if(isQuery){
                 rs = st.executeQuery(query);

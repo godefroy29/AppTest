@@ -59,8 +59,14 @@ public class BestSplashScreen extends Activity {
             startActivity(accueil);
             finish();
         }else{
-            Toast.makeText(BestSplashScreen.this, "Vérifiez vos identifiants.", Toast.LENGTH_LONG).show();
+            Toast.makeText(BestSplashScreen.this, R.string.bestSplashScreen_connect_not_found, Toast.LENGTH_LONG).show();
         }
+    }
+
+    public void testIdError(){
+        progressDialog.dismiss();
+
+        Toast.makeText(BestSplashScreen.this, R.string.bestSplashScreen_connect_error, Toast.LENGTH_LONG).show();
     }
 
 }

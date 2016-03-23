@@ -27,6 +27,9 @@ public class DatabaseTest extends AbstractDatabaseClass  {
     @Override
     protected void onPostExecute(Void result) {
         try {
+            if(rs == null){
+                caller.getResult(null);
+            }
             if(rs.next()){
                 caller.getResult(rs.getString(1));
             }else{
