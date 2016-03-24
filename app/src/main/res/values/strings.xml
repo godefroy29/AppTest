@@ -28,5 +28,15 @@
 
     <!-- ProjectCreate Strings -->
     <string name="projectCreate_creating_project"></string>
+    <string name="valider">Valider</string>
+    <string name="createNewProject">Création d\'un nouveau projet</string>
+    <string name="titleProject">Titre :</string>
+    <string name="DescProject">Description :</string>
+    <string name="budgetProject">Budget Prévu :</string>
+    <string name="budgetFinProjet">Budget final prévu :</string>
+    <string name="dateDProjet">Date de début :</string>
+    <string name="dateFProjet">Date de fin prévue :</string>
+    <string name="title_activity_tache_create">TacheCreate</string>
+    <string name="createOfATask">Création d\'une tâche</string>
 
 </resources>

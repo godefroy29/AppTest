@@ -18,8 +18,6 @@ import java.util.Date;
 
 public class ProjetCreate extends AppCompatActivity {
 
-     //TODO : finish l'activité précédente
-     //TODO : lancer la meme activité de nouveau quand on press back
     ProgressDialog progressDialog;
     Button btnValider;
     DatePicker dtpD;
@@ -57,12 +55,14 @@ public class ProjetCreate extends AppCompatActivity {
         myItem.pro_budgetFP = Float.valueOf(((TextView) findViewById(R.id.eTxtBudgetD)).getText().toString());
         myItem.pro_dateD = new java.sql.Date(new Date(dtpD.getYear(), dtpD.getMonth(), dtpD.getDayOfMonth()).getTime());
         myItem.pro_dateFP = new java.sql.Date(new Date(dtpFP.getYear(), dtpFP.getMonth(), dtpFP.getDayOfMonth()).getTime());
-        return myItem;//TODO : fill with champs from activity
+        return myItem;
     }
 
 
     public void eAddProjetDone(){
         progressDialog.dismiss();
+        startActivity(new Intent(this, Accueil.class));
+        finish();
     }
 
 }

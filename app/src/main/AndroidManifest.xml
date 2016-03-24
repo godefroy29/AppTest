@@ -75,6 +75,10 @@
         <activity
             android:name=".ProjetCreate"
             android:label="@string/title_activity_projet_create"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".TacheCreate"
+            android:label="@string/title_activity_tache_create"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

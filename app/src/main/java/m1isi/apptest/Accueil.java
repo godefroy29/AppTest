@@ -39,7 +39,7 @@ public class Accueil extends AppCompatActivity {
 
     private ViewPager mViewPager;
 
-    private  AccueilDB accueilDB;
+    private static AccueilDB accueilDB;
 
 
     @Override
@@ -59,6 +59,7 @@ public class Accueil extends AppCompatActivity {
 
         accueilDB = new AccueilDB(Accueil.this);
         accueilDB.eGetProjet();
+
     }
 
 
@@ -72,18 +73,29 @@ public class Accueil extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(Accueil.this, ProjetAccueil.class);
                 intent.putExtra("idProjet", id);
-                //Toast.makeText(Accueil.this, "Id : " + id, Toast.LENGTH_SHORT).show();
                 startActivity(intent);
             }
         });
     }
 
-    //TODO : pour les taches et notifications
-    /*public void setListItemTache(List<ItemProjet> myList){
+
+    public void setListItemTache(List<ItemTache> myList){
         listTache = (ListView) findViewById(R.id.listTache);
-        ProjetAdapter adapter = new ProjetAdapter(this, myList);
-        listProjet.setAdapter(adapter);
+        TacheAdapter adapter = new TacheAdapter(this, myList);
+        listTache.setAdapter(adapter);
+        listTache.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(Accueil.this, AccueilTache.class);
+                intent.putExtra("idTache", id);
+                startActivity(intent);
+            }
+        });
     }
+
+    //TODO : pour les notifications
+    /*
     public void setListItemNotification(List<ItemProjet> myList){
         listNotification = (ListView) findViewById(R.id.listNotification);
         ProjetAdapter adapter = new ProjetAdapter(this, myList);
@@ -182,7 +194,10 @@ public class Accueil extends AppCompatActivity {
 
     public static class TacheFragment extends Fragment{
 
+        private FloatingActionButton fabNewTache;
+        private Intent tacheCreate;
         private static final String ARG_SECTION_NUMBER = "section_number";
+
         public static TacheFragment newInstance(int sectionNumber) {
             TacheFragment fragment = new TacheFragment();
             Bundle args = new Bundle();
@@ -194,6 +209,8 @@ public class Accueil extends AppCompatActivity {
         @Override
         public void onCreate(Bundle savedInstancesState){
             super.onCreate(savedInstancesState);
+            tacheCreate = new Intent(this.getContext(), TacheCreate.class);
+
         }
 
         @Override
@@ -201,7 +218,58 @@ public class Accueil extends AppCompatActivity {
             View view = inflater.inflate(R.layout.fragment_tache, container, false);
             TextView textView = (TextView) view.findViewById(R.id.section_label);
             textView.setText("Tâches récentes");
+            fabNewTache = (FloatingActionButton) view.findViewById(R.id.fabNewTache);
+            fabNewTache.setOnClickListener(new View.OnClickListener() {
+                public void onClick(View v) {
+                    startActivity(tacheCreate);
+                    getActivity().finish();
+                }
+            });
             return view;
+        }
+    }
+
+    public static class TacheAdapter extends BaseAdapter {
+
+        private List<ItemTache> myList;
+        private Context myContext;
+        private LayoutInflater myLayout;
+
+
+        public TacheAdapter(Context context, List<ItemTache> list){
+            myContext = context;
+            myList = list;
+            myLayout = LayoutInflater.from(myContext);
+        }
+
+        @Override
+        public int getCount() {
+            return myList.size();
+        }
+
+        @Override
+        public Object getItem(int position) {
+            return myList.get(position);
+        }
+
+        @Override
+        public long getItemId(int position) {
+            return myList.get(position).id_tache;//retourne l'id du projet et pas sa position
+        }
+
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent) {
+            LinearLayout layoutItem;
+            if (convertView == null) {
+                layoutItem = (LinearLayout) myLayout.inflate(R.layout.list_item_tache, parent, false);
+            } else {
+                layoutItem = (LinearLayout) convertView;
+            }
+            TextView txt_titre = (TextView)layoutItem.findViewById(R.id.txt_tac_titre);
+            TextView txt_desc = (TextView)layoutItem.findViewById(R.id.txt_tac_desc);
+            txt_titre.setText(myList.get(position).tac_titre);
+            txt_desc.setText(myList.get(position).tac_desc);
+            return layoutItem;
         }
     }
 

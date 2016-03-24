@@ -2,12 +2,13 @@ package m1isi.apptest;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.concurrent.ThreadPoolExecutor;
 
 /**
  * Created by godef on 08/03/2016.
  */
 public class AccueilDB extends AbstractDatabaseClass{
-    private enum functionCalled{eGetProjet}
+    private enum functionCalled{eGetProjet,eGetTache}
     final static boolean _DEBUG = true;
 
     Accueil caller;
@@ -22,10 +23,16 @@ public class AccueilDB extends AbstractDatabaseClass{
         query = "SELECT * FROM t_projet JOIN p_statutprojet ON t_projet.id_statutprojet = p_statutprojet.id_statutprojet";
         isQuery = true;
         fc = functionCalled.eGetProjet;
-
-        System.out.println("PLOP");
         execute();
     }
+
+    public void eGetTache(){
+        query = "SELECT * FROM t_tache JOIN p_statuttache ON t_tache.id_statuttache = p_statuttache.id_statuttache";
+        isQuery = true;
+        fc = functionCalled.eGetTache;
+        execute();
+    }
+
 
     @Override
     protected void onPostExecute(Void result) {
@@ -50,6 +57,24 @@ public class AccueilDB extends AbstractDatabaseClass{
                         System.out.print(myItem.id_projet);
                     }
                     caller.setListItemProjet(myList);
+                    new AccueilDB(caller).eGetTache();
+                    break;
+
+                case eGetTache:
+                    ArrayList<ItemTache> myListTache = new ArrayList<ItemTache>();
+                    while(rs.next()){
+                        ItemTache myItem = new ItemTache();
+                        myItem.id_tache = rs.getInt("id_tache");
+                        myItem.tac_titre = rs.getString("tac_titre");
+                        myItem.tac_desc = rs.getString("tac_desc");
+                        myItem.tac_dateD = rs.getDate("tac_dateD");
+                        myItem.tac_dateF = rs.getDate("tac_dateF");
+                        myItem.tac_duree = rs.getFloat("tac_duree");
+                        myItem.id_statuttache = rs.getInt("id_statuttache");
+                        myItem.statuttache_desc = rs.getString("statuttache_desc");
+                        myListTache.add(myItem);
+                    }
+                    caller.setListItemTache(myListTache);
                     break;
             }
 
