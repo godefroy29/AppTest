@@ -75,7 +75,8 @@
         <activity
             android:name=".ProjetCreate"
             android:label="@string/title_activity_projet_create"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".CreateUser"></activity>
     </application>
 
 </manifest>
