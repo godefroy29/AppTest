@@ -36,25 +36,20 @@
     <string name="bestSplashScreen_Create_user">Create User</string>
 
     <!-- ProjectCreate Strings -->
-<<<<<<< HEAD
-    <string name="projectCreate_creating_project"></string>
-    <string name="valider">Valider</string>
-    <string name="createNewProject">Création d\'un nouveau projet</string>
-    <string name="titleProject">Titre :</string>
-    <string name="DescProject">Description :</string>
-    <string name="budgetProject">Budget Prévu :</string>
-    <string name="budgetFinProjet">Budget final prévu :</string>
-    <string name="dateDProjet">Date de début :</string>
-    <string name="dateFProjet">Date de fin prévue :</string>
+    <string name="projectCreate_createNewProject">Create a new project</string>
+    <string name="projectCreate_titleProject">Title :</string>
+    <string name="projectCreate_DescProject">Description :</string>
+    <string name="projectCreate_budgetProject">Previsionnal budget :</string>
+    <string name="projectCreate_budgetFinProjet">Previsionnal ending budget :</string>
+    <string name="dateDProjet">Starting date :</string>
+    <string name="dateFProjet">Ending date :</string>
     <string name="title_activity_tache_create">TacheCreate</string>
-    <string name="createOfATask">Création d\'une tâche</string>
-=======
+    <string name="projectCreate_create_of_ATask">Create a task</string>
     <string name="projectCreate_creating_project">Create a project</string>
 
     <!-- CreateUser Strings -->
     <string name="createUser_adding_user">The user already exist</string>
     <string name="createUser_already_exist">The user already exist</string>
     <string name="createUser_user_added">User added</string>
->>>>>>> origin/master
 
 </resources>

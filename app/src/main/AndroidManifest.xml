@@ -76,14 +76,11 @@
             android:name=".ProjetCreate"
             android:label="@string/title_activity_projet_create"
             android:theme="@style/AppTheme.NoActionBar" />
-<<<<<<< HEAD
         <activity
             android:name=".TacheCreate"
             android:label="@string/title_activity_tache_create"
             android:theme="@style/AppTheme.NoActionBar"></activity>
-=======
         <activity android:name=".CreateUser"></activity>
->>>>>>> origin/master
     </application>
 
 </manifest>

@@ -60,7 +60,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/titleProject"
+        android:text="@string/projectCreate_titleProject"
         android:id="@+id/textView2"
         android:layout_alignBaseline="@+id/eTxtTitre"
         android:layout_alignBottom="@+id/eTxtTitre"
@@ -72,7 +72,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/DescProject"
+        android:text="@string/projectCreate_DescProject"
         android:id="@+id/textView3"
         android:layout_alignBaseline="@+id/eTxtDesc"
         android:layout_alignBottom="@+id/eTxtDesc"
@@ -82,7 +82,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/budgetProject"
+        android:text="@string/projectCreate_budgetProject"
         android:id="@+id/textView4"
         android:layout_alignBaseline="@+id/eTxtBudgetD"
         android:layout_alignBottom="@+id/eTxtBudgetD"
@@ -92,7 +92,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/budgetFinProjet"
+        android:text="@string/projectCreate_budgetFinProjet"
         android:id="@+id/textView5"
         android:layout_alignBaseline="@+id/eTxtBudgetFP"
         android:layout_alignBottom="@+id/eTxtBudgetFP"
@@ -142,7 +142,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/valider"
+        android:text="@string/general_validate"
         android:id="@+id/btnValider"
         android:layout_marginTop="48dp"
         android:layout_below="@+id/dtpFP"
@@ -151,7 +151,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/createNewProject"
+        android:text="@string/projectCreate_createNewProject"
         android:id="@+id/textView8"
         android:textSize="20dp"
         android:layout_alignParentTop="true"
