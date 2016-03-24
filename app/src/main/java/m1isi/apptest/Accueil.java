@@ -39,6 +39,7 @@ public class Accueil extends AppCompatActivity {
     private ViewPager mViewPager;
 
     private static AccueilDB accueilDB;
+    private int id_identifiant;
 
 
     @Override
@@ -55,7 +56,7 @@ public class Accueil extends AppCompatActivity {
 
         mViewPager = (ViewPager) findViewById(R.id.container);
         mViewPager.setAdapter(mSectionsPagerAdapter);
-
+        id_identifiant = getIntent().getExtras().getInt("id_identifiant");
         accueilDB = new AccueilDB(Accueil.this, getIntent().getExtras().getInt("id_identifiant"));
         accueilDB.eGetProjet();
 
@@ -71,7 +72,8 @@ public class Accueil extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(Accueil.this, ProjetAccueil.class);
-                intent.putExtra("idProjet", id);
+                intent.putExtra("id_projet", ((int) id));
+                intent.putExtra("id_identifiant", id_identifiant);
                 startActivity(intent);
             }
         });
@@ -171,6 +173,7 @@ public class Accueil extends AppCompatActivity {
             fabNewProjet = (FloatingActionButton) view.findViewById(R.id.fabNewProjet);
             fabNewProjet.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
+                    projetCreate.putExtra("id_identifiant",getActivity().getIntent().getExtras().getString("id_identifiant"));
                     startActivity(projetCreate);
                     getActivity().finish();
                 }

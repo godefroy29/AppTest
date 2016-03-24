@@ -18,6 +18,7 @@ public class AccueilDB extends AbstractDatabaseClass{
 
     public AccueilDB(Accueil caller, int id_identifiant){
         this.caller = caller;
+        this.id_identifiant = id_identifiant;
     }
 
     public void eGetProjet(){

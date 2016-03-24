@@ -25,7 +25,7 @@ public class ProjetCreate extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-       startActivity(new Intent(new Intent(this, Accueil.class)));
+       startActivity(new Intent(this, Accueil.class).putExtra("id_identifiant",getIntent().getExtras().getInt("id_identifiant")));
        finish();
     }
 
@@ -41,7 +41,7 @@ public class ProjetCreate extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 progressDialog = ProgressDialog.show(ProjetCreate.this, getString(R.string.general_processing), getString(R.string.projectCreate_creating_project), true, false);
-                ProjetCreateDB projetCreate = new ProjetCreateDB(ProjetCreate.this);
+                ProjetCreateDB projetCreate = new ProjetCreateDB(ProjetCreate.this, getIntent().getExtras().getInt("id_identifiant"));
                 projetCreate.eAddProjet(fillProjectItem());
             }
         });
@@ -61,7 +61,7 @@ public class ProjetCreate extends AppCompatActivity {
 
     public void eAddProjetDone(){
         progressDialog.dismiss();
-        startActivity(new Intent(this, Accueil.class));
+        startActivity(new Intent(this, Accueil.class).putExtra("id_identifiant",getIntent().getExtras().getInt("id_identifiant")));
         finish();
     }
 
