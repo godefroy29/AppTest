@@ -20,9 +20,12 @@ public class BestSplashScreen extends Activity {
     TextView txtPwd;
 
     Intent accueil;
+    Intent createUser;
 
     Button btnAdmin;
     Button btnConnexion;
+    Button btnCreateUser;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,22 +36,29 @@ public class BestSplashScreen extends Activity {
         txtName = (TextView) findViewById(R.id.txtName);
         txtPwd = (TextView) findViewById(R.id.txtPwd);
         accueil = new Intent(this, Accueil.class);
+        createUser = new Intent(this, CreateUser.class);
         btnAdmin = (Button) findViewById(R.id.btnAdmin);
         btnConnexion = (Button) findViewById(R.id.btnConnexion);
+        btnCreateUser = (Button) findViewById(R.id.bestSplashScreenCreateUserButton);
 
         btnAdmin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(accueil);
-                finish();
             }
         });
         btnConnexion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                progressDialog = ProgressDialog.show(BestSplashScreen.this, "Connecting", "Trying to verify your informations", true, false);
+                progressDialog = ProgressDialog.show(BestSplashScreen.this, getResources().getString(R.string.general_connecting), getResources().getString(R.string.general_verifing_infos), true, false);
                 BestSplashScreenDB testId = new BestSplashScreenDB(BestSplashScreen.this);
                 testId.testId(txtName.getText().toString(), txtPwd.getText().toString());
+            }
+        });
+        btnCreateUser.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(createUser);
             }
         });
     }
@@ -57,16 +67,15 @@ public class BestSplashScreen extends Activity {
         progressDialog.dismiss();
         if (idValide){
             startActivity(accueil);
-            finish();
         }else{
-            Toast.makeText(BestSplashScreen.this, R.string.bestSplashScreen_connect_not_found, Toast.LENGTH_LONG).show();
+            Toast.makeText(BestSplashScreen.this, R.string.general_connect_not_found, Toast.LENGTH_LONG).show();
         }
     }
 
     public void testIdError(){
         progressDialog.dismiss();
 
-        Toast.makeText(BestSplashScreen.this, R.string.bestSplashScreen_connect_error, Toast.LENGTH_LONG).show();
+        Toast.makeText(BestSplashScreen.this, R.string.general_connect_error, Toast.LENGTH_LONG).show();
     }
 
 }

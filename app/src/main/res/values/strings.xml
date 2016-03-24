@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">AppTest</string>
+    <string name="app_name">AGP</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_best_splash_screen">BestSplashScreen</string>
     <string name="title_activity_accueil">Accueil</string>
@@ -21,12 +21,22 @@
     <string name="title_activity_projet_create">ProjetCreate</string>
 
     <string name="general_processing">Processing</string>
+    <string name="general_validate">Validate</string>
+    <string name="general_connect_error">Error: coudn\'t connect to the database</string>
+    <string name="general_connect_not_found">Couldn\'t find you in the database\nPlease check you login and password</string>
+
+    <string name="general_login">Login</string>
+    <string name="general_password">Password</string>
+    <string name="general_connecting">Connecting...</string>
+    <string name="general_verifing_infos">Trying to verify your informations</string>
+    <string name="general_creator">Made by Godefroy POIRIER and Sylvain LOIZEAU</string>
 
     <!-- BestSplashScreen Strings -->
-    <string name="bestSplashScreen_connect_error">Error: coudn\'t connect to the database</string>
     <string name="bestSplashScreen_connect_not_found">Couldn\'t find you in the database\nPlease check you login and password</string>
+    <string name="bestSplashScreen_Create_user">Create User</string>
 
     <!-- ProjectCreate Strings -->
+<<<<<<< HEAD
     <string name="projectCreate_creating_project"></string>
     <string name="valider">Valider</string>
     <string name="createNewProject">Création d\'un nouveau projet</string>
@@ -38,5 +48,13 @@
     <string name="dateFProjet">Date de fin prévue :</string>
     <string name="title_activity_tache_create">TacheCreate</string>
     <string name="createOfATask">Création d\'une tâche</string>
+=======
+    <string name="projectCreate_creating_project">Create a project</string>
+
+    <!-- CreateUser Strings -->
+    <string name="createUser_adding_user">The user already exist</string>
+    <string name="createUser_already_exist">The user already exist</string>
+    <string name="createUser_user_added">User added</string>
+>>>>>>> origin/master
 
 </resources>
