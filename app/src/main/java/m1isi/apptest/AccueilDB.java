@@ -8,6 +8,7 @@ import java.util.concurrent.ThreadPoolExecutor;
  * Created by godef on 08/03/2016.
  */
 public class AccueilDB extends AbstractDatabaseClass{
+    private int id_identifiant;
     private enum functionCalled{eGetProjet,eGetTache}
     final static boolean _DEBUG = true;
 
@@ -15,19 +16,23 @@ public class AccueilDB extends AbstractDatabaseClass{
 
     private functionCalled fc;
 
-    public AccueilDB(Accueil caller){
+    public AccueilDB(Accueil caller, int id_identifiant){
         this.caller = caller;
     }
 
     public void eGetProjet(){
-        query = "SELECT * FROM t_projet JOIN p_statutprojet ON t_projet.id_statutprojet = p_statutprojet.id_statutprojet";
+        query = "SELECT * ";
+        query = query + " FROM t_projet ";
+        query = query + " JOIN p_statutprojet ON t_projet.id_statutprojet = p_statutprojet.id_statutprojet ";
+        query = query + " JOIN r_pi ON t_projet.id_projet = r_pi.id_projet ";
+        query = query + " WHERE r_pi.id_identifiant = " + id_identifiant;
         isQuery = true;
         fc = functionCalled.eGetProjet;
         execute();
     }
 
     public void eGetTache(){
-        query = "SELECT * FROM t_tache JOIN p_statuttache ON t_tache.id_statuttache = p_statuttache.id_statuttache";
+        query = "SELECT * FROM t_tache JOIN p_statuttache ON t_tache.id_statuttache = p_statuttache.id_statuttache WHERE t_tache.id_identifiant = " + id_identifiant;
         isQuery = true;
         fc = functionCalled.eGetTache;
         execute();
@@ -40,6 +45,11 @@ public class AccueilDB extends AbstractDatabaseClass{
             switch (fc){
                 case eGetProjet:
                     ArrayList<ItemProjet> myList = new ArrayList<ItemProjet>();
+                    if (rs == null){
+                        caller.setListItemProjet(myList);
+                        new AccueilDB(caller, id_identifiant).eGetTache();
+                        break;
+                    }
                     while(rs.next()){
                         ItemProjet myItem = new ItemProjet();
                         myItem.id_projet = rs.getInt("id_projet");
@@ -57,7 +67,7 @@ public class AccueilDB extends AbstractDatabaseClass{
                         System.out.print(myItem.id_projet);
                     }
                     caller.setListItemProjet(myList);
-                    new AccueilDB(caller).eGetTache();
+                    new AccueilDB(caller, id_identifiant).eGetTache();
                     break;
 
                 case eGetTache:

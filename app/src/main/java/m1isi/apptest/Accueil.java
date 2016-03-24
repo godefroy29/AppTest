@@ -33,7 +33,6 @@ public class Accueil extends AppCompatActivity {
 
     private static ListView listTache;
     private static ListView listProjet;
-    private static ListView listNotification;
 
     private SectionsPagerAdapter mSectionsPagerAdapter;
 
@@ -57,7 +56,7 @@ public class Accueil extends AppCompatActivity {
         mViewPager = (ViewPager) findViewById(R.id.container);
         mViewPager.setAdapter(mSectionsPagerAdapter);
 
-        accueilDB = new AccueilDB(Accueil.this);
+        accueilDB = new AccueilDB(Accueil.this, getIntent().getExtras().getInt("id_identifiant"));
         accueilDB.eGetProjet();
 
     }
@@ -94,13 +93,6 @@ public class Accueil extends AppCompatActivity {
         });
     }
 
-    //TODO : pour les notifications
-    /*
-    public void setListItemNotification(List<ItemProjet> myList){
-        listNotification = (ListView) findViewById(R.id.listNotification);
-        ProjetAdapter adapter = new ProjetAdapter(this, myList);
-        listProjet.setAdapter(adapter);
-    }*/
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -126,9 +118,6 @@ public class Accueil extends AppCompatActivity {
                 case 1:
                     //getParent().setTitle("Tâches");
                     return  TacheFragment.newInstance(1);
-                case 2:
-                    //getParent().setTitle("Notifications");
-                    return  NotificationFragment.newInstance(2);
                 default:
                     return null;
             }
@@ -137,7 +126,7 @@ public class Accueil extends AppCompatActivity {
         @Override
         public int getCount() {
             // Show 3 total pages.
-            return 3;
+            return 2;
         }
 
         @Override
@@ -147,8 +136,6 @@ public class Accueil extends AppCompatActivity {
                     return "Projets";
                 case 1:
                     return "Taches";
-                case 2:
-                    return "Notifications";
             }
             return null;
         }
@@ -179,7 +166,7 @@ public class Accueil extends AppCompatActivity {
             View view = inflater.inflate(R.layout.fragment_projet, container, false);
 
             TextView textView = (TextView) view.findViewById(R.id.section_label);
-            textView.setText("Projets récents");
+            textView.setText("Projets");
 
             fabNewProjet = (FloatingActionButton) view.findViewById(R.id.fabNewProjet);
             fabNewProjet.setOnClickListener(new View.OnClickListener() {
@@ -194,7 +181,7 @@ public class Accueil extends AppCompatActivity {
 
     public static class TacheFragment extends Fragment{
 
-        private FloatingActionButton fabNewTache;
+
         private Intent tacheCreate;
         private static final String ARG_SECTION_NUMBER = "section_number";
 
@@ -217,14 +204,7 @@ public class Accueil extends AppCompatActivity {
         public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
             View view = inflater.inflate(R.layout.fragment_tache, container, false);
             TextView textView = (TextView) view.findViewById(R.id.section_label);
-            textView.setText("Tâches récentes");
-            fabNewTache = (FloatingActionButton) view.findViewById(R.id.fabNewTache);
-            fabNewTache.setOnClickListener(new View.OnClickListener() {
-                public void onClick(View v) {
-                    startActivity(tacheCreate);
-                    getActivity().finish();
-                }
-            });
+            textView.setText("Tâches");
             return view;
         }
     }
@@ -254,7 +234,7 @@ public class Accueil extends AppCompatActivity {
 
         @Override
         public long getItemId(int position) {
-            return myList.get(position).id_tache;//retourne l'id du projet et pas sa position
+            return myList.get(position).id_tache;
         }
 
         @Override
@@ -270,32 +250,6 @@ public class Accueil extends AppCompatActivity {
             txt_titre.setText(myList.get(position).tac_titre);
             txt_desc.setText(myList.get(position).tac_desc);
             return layoutItem;
-        }
-    }
-
-    public static class NotificationFragment extends Fragment{
-
-        private static final String ARG_SECTION_NUMBER = "section_number";
-        public static NotificationFragment newInstance(int sectionNumber) {
-            NotificationFragment fragment = new NotificationFragment();
-            Bundle args = new Bundle();
-            args.putInt(ARG_SECTION_NUMBER, sectionNumber);
-            fragment.setArguments(args);
-            return fragment;
-        }
-
-        @Override
-        public void onCreate(Bundle savedInstancesState){
-            super.onCreate(savedInstancesState);
-        }
-
-        @Override
-        public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
-            View view = inflater.inflate(R.layout.fragment_notification, container, false);
-            TextView textView = (TextView) view.findViewById(R.id.section_label);
-            textView.setText("Notifications récentes");
-
-            return view;
         }
     }
 

@@ -21,7 +21,7 @@ public class BestSplashScreenDB extends AbstractDatabaseClass  {
 
     public void testId(final String name, final String password){
         fc = functionCalled.eTestId;
-        query = " SELECT * FROM t_identifiant "
+        query = " SELECT id_identifiant FROM t_identifiant "
                 + " WHERE id_username='" + name + "' "
                 + " AND id_password='" + password + "';";
         isQuery = true;
@@ -37,12 +37,12 @@ public class BestSplashScreenDB extends AbstractDatabaseClass  {
                     if(rs == null){
                         if(_DEBUG){ System.out.print("error\n"); }
                         caller.testIdError();
-                    }else if(rs.first()){
+                    }else if(rs.next()){
                         if(_DEBUG){ System.out.print("true\n"); }
-                        caller.testIdValide(true);
+                        caller.testIdValide(rs.getInt(1));
                     }else{
                         if(_DEBUG){ System.out.print("false\n"); }
-                        caller.testIdValide(false);
+                        caller.testIdValide(-1);
                     }
                 } catch (SQLException e) {
                     e.printStackTrace();

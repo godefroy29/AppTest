@@ -15,6 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class BestSplashScreen extends Activity {
+
     ProgressDialog progressDialog;
     TextView txtName;
     TextView txtPwd;
@@ -63,9 +64,10 @@ public class BestSplashScreen extends Activity {
         });
     }
 
-    public void testIdValide(boolean idValide){
+    public void testIdValide(int idValide){
         progressDialog.dismiss();
-        if (idValide){
+        if (idValide > 0){
+            accueil.putExtra("id_identifiant", idValide);
             startActivity(accueil);
         }else{
             Toast.makeText(BestSplashScreen.this, R.string.general_connect_not_found, Toast.LENGTH_LONG).show();
