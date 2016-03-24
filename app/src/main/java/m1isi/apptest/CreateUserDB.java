@@ -30,8 +30,7 @@ public class CreateUserDB extends AbstractDatabaseClass  {
         this.password = password;
 
         query = " SELECT * FROM t_identifiant "
-                + " WHERE id_username='" + login + "' "
-                + " AND id_password='" + password + "';";
+                + " WHERE id_username='" + login + "';";
         isQuery = true;
         if(_DEBUG){ System.out.println(query); }
         execute();
@@ -57,8 +56,7 @@ public class CreateUserDB extends AbstractDatabaseClass  {
         this.password = password;
 
         query = " SELECT * FROM t_identifiant "
-                + " WHERE id_username='" + login + "' "
-                + " AND id_password='" + password + "';";
+                + " WHERE id_username='" + login + "';";
         isQuery = true;
         if(_DEBUG){ System.out.println(query); }
         execute();
