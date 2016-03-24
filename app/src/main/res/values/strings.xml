@@ -51,5 +51,12 @@
     <string name="createUser_adding_user">The user already exist</string>
     <string name="createUser_already_exist">The user already exist</string>
     <string name="createUser_user_added">User added</string>
+    <string name="TaskCreate_title">Task title</string>
+    <string name="TaskCreate_description">Description</string>
+    <string name="TaskCreate_Time">Time</string>
+    <string name="TaskCreate_starting_date">Starting date</string>
+    <string name="TaskCreate_ending_date">Ending date</string>
+    <string name="TaskCreate_task_added">Task added</string>
+    <string name="TaskCreate_adding_task">Adding task</string>
 
 </resources>

@@ -12,4 +12,119 @@
     tools:context="m1isi.apptest.TacheCreate"
     tools:showIn="@layout/activity_tache_create">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/TaskCreate_title"
+        android:id="@+id/TaskCreateTitleTextView"
+        android:layout_marginLeft="98dp"
+        android:layout_marginStart="98dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="32dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/TaskCreate_description"
+        android:id="@+id/TaskCreateDescriptionTextView"
+        android:layout_below="@+id/TaskCreateTitleTextView"
+        android:layout_alignRight="@+id/TaskCreateTitleTextView"
+        android:layout_alignEnd="@+id/TaskCreateTitleTextView"
+        android:layout_marginTop="38dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/TaskCreate_Time"
+        android:id="@+id/TaskCreateTimeTextView"
+        android:layout_marginTop="35dp"
+        android:layout_below="@+id/TaskCreateDescriptionTextView"
+        android:layout_toLeftOf="@+id/TaskCreateTitleEditText"
+        android:layout_toStartOf="@+id/TaskCreateTitleEditText" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/TaskCreate_starting_date"
+        android:id="@+id/TaskCreateDateBeginTextView"
+        android:layout_marginTop="57dp"
+        android:layout_below="@+id/TaskCreateTimeTextView"
+        android:layout_alignLeft="@+id/TaskCreateTitleTextView"
+        android:layout_alignStart="@+id/TaskCreateTitleTextView" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/TaskCreate_ending_date"
+        android:id="@+id/TaskCreateDateEndTextView"
+        android:layout_marginLeft="67dp"
+        android:layout_marginStart="67dp"
+        android:layout_alignTop="@+id/TaskCreateDateBeginTextView"
+        android:layout_toRightOf="@+id/TaskCreateTimeEditText"
+        android:layout_toEndOf="@+id/TaskCreateTimeEditText" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/TaskCreateTitleEditText"
+        android:layout_marginLeft="38dp"
+        android:layout_marginStart="38dp"
+        android:layout_toRightOf="@+id/TaskCreateTitleTextView"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_above="@+id/TaskCreateDescriptionTextView" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/TaskCreateDescriptionEditText"
+        android:layout_alignBottom="@+id/TaskCreateDescriptionTextView"
+        android:layout_alignLeft="@+id/TaskCreateTitleEditText"
+        android:layout_alignStart="@+id/TaskCreateTitleEditText"
+        android:layout_alignRight="@+id/TaskCreateTitleEditText"
+        android:layout_alignEnd="@+id/TaskCreateTitleEditText" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/TaskCreateTimeEditText"
+        android:layout_above="@+id/TaskCreateDateBeginTextView"
+        android:layout_alignLeft="@+id/TaskCreateDescriptionEditText"
+        android:layout_alignStart="@+id/TaskCreateDescriptionEditText"
+        android:text="0" />
+
+    <DatePicker
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/TaskCreateDateBeginDatePicker"
+        android:layout_below="@+id/TaskCreateDateEndTextView"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="45dp" />
+
+    <DatePicker
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/TaskCreateDateEndDatePicker"
+        android:layout_alignTop="@+id/TaskCreateDateBeginDatePicker"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/general_validate"
+        android:id="@+id/TaskCreateValidateButton"
+        android:layout_below="@+id/TaskCreateDateBeginDatePicker"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="34dp" />
 </RelativeLayout>
